@@ -17,11 +17,16 @@ export default class Movie extends Component {
   addReview = (review) => {
     this.setState((prevState) => ({
       reviews: [...prevState.reviews, { text: review, rating: this.state.rating }],
+      rating: null,  // Clear the rating after adding a review
     }));
   };
 
   setRating = (rating) => {
     this.setState({ rating });
+  };
+
+  resetRating = () => {
+    this.setState({ rating: null });
   };
 
   render() {
@@ -34,7 +39,7 @@ export default class Movie extends Component {
               src={this.props.img}
               alt={this.props.title}
             />
-            <Carousel.Caption>
+            <Carousel.Caption className="overLayTitle">
               <h4>{this.props.title} ({this.props.year})</h4>
               <p>{this.props.info}</p>
             </Carousel.Caption>
@@ -46,15 +51,15 @@ export default class Movie extends Component {
                 src={this.props.img}
                 alt={this.props.title}
               />
-              <Carousel.Caption>
+              <Carousel.Caption className="overLayReview">
                 <ReviewList reviews={[review]} />
               </Carousel.Caption>
             </Carousel.Item>
           ))}
         </Carousel>
         <Card.Body>
-          <ReviewForm addReview={this.addReview} setRating={this.setRating} />
-          <Stars setRating={this.setRating} />
+          <ReviewForm addReview={this.addReview} resetRating={this.resetRating} /> {/* Pass resetRating here */}
+          <Stars setRating={this.setRating} rating={this.state.rating} />
         </Card.Body>
       </Card>
     );

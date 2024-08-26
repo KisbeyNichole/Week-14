@@ -1,12 +1,17 @@
+
 .App {
   text-align: center;
+  background-color: brown;
+
 }
 
 .movie-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 2px;
 }
+
 
 .movie {
   margin: 20px;
@@ -27,3 +32,17 @@
   color: #fff;
 }
 
+.overLayTitle{
+  height: 300px;
+  font-size: 12px;
+}
+
+.overLayReview{
+  height: fit-content;
+  
+}
+
+.card{
+  margin: 1px;
+  
+}

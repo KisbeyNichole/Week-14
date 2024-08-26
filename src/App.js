@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import MovieList from './components/MovieList';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import popcornImage from './components/popcorn.png'
 
 
 
@@ -22,9 +25,23 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Todays Chart Toppers</h1>
+        <Navbar className="bg-body-tertiary">
+        <Container >
+          <Navbar.Brand id="Title" href="#home">
+            <img
+              alt=""
+              src={popcornImage} 
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{' '}
+           Todays Chart Toppers
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
       <MovieList movies={movies} />
     </div>
+    
   );
 }
 

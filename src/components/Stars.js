@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-export default function Stars({ setRating, rating = null, readOnly = false }) {
+export default function Stars({ setRating, rating = null, readOnly = false, resetRating }) {
   const [selectedRating, setSelectedRating] = useState(rating);
 
   const handleRating = (newRating) => {
@@ -9,6 +9,12 @@ export default function Stars({ setRating, rating = null, readOnly = false }) {
       setRating(newRating);
     }
   };
+
+  useEffect(() => {
+    if (rating === null) {
+      setSelectedRating(null);  // Reset stars when rating is cleared
+    }
+  }, [rating]);
 
   return (
     <div>
@@ -22,5 +28,4 @@ export default function Stars({ setRating, rating = null, readOnly = false }) {
         </span>
       ))}
     </div>
-  );
-}
+  );}

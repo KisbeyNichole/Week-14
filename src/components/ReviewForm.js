@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ReviewForm({ addReview }) {
+export default function ReviewForm({ addReview, resetRating }) {
   const [review, setReview] = useState('');
 
   const handleSubmit = (e) => {
@@ -8,20 +8,20 @@ export default function ReviewForm({ addReview }) {
     if (review) {
       addReview(review);
       setReview('');  // Clear the input after submission
+      resetRating();  // Clear the stars after submission
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="mb-3">
+      <div>
         <textarea
           value={review}
           onChange={(e) => setReview(e.target.value)}
           placeholder="Leave a review"
-          className="form-control"
         />
       </div>
-      <button type="submit" className="btn btn-primary">Submit</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }
