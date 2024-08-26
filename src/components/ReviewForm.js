@@ -13,14 +13,15 @@ export default function ReviewForm({ addReview }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className="mb-3">
         <textarea
           value={review}
           onChange={(e) => setReview(e.target.value)}
           placeholder="Leave a review"
+          className="form-control"
         />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" className="btn btn-primary">Submit</button>
     </form>
   );
 }
